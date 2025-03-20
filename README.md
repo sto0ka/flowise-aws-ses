@@ -131,6 +131,7 @@ nano server.js
 ```
 
 Paste the provided `server.js` content.
+https://github.com/sto0ka/flowise-aws-ses/blob/main/server.js
 
 ## 5. Create Docker Compose File for Flowise & Opensearch
 
@@ -140,7 +141,7 @@ In the main project directory (`~/flowise`), create or update `docker-compose.ya
 nano ~/flowise/docker-compose.yaml
 ```
 
-Paste the provided `docker-compose.yaml` content.
+Paste the provided `docker-compose.yaml` content. Make sure you update passwords!
 
 ```bash
 services:
