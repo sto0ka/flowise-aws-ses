@@ -132,7 +132,7 @@ nano server.js
 
 Paste the provided `server.js` content.
 
-'''json
+'''bash
 // server.js
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -228,7 +228,6 @@ main().catch((error) => {
   console.error("🚨 Fatal error:", error);
   process.exit(1);
 });
-
 '''
 
 ## 5. Create Docker Compose File for Flowise & Opensearch
