@@ -1,0 +1,36 @@
+services:
+  opensearch:
+    image: opensearchproject/opensearch:latest
+    container_name: opensearch
+    environment:
+      - discovery.type=single-node
+      - plugins.ml_commons.only_run_on_ml_node=false
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=your_password
+      - DISABLE_SECURITY_PLUGIN=true
+      - OPENSEARCH_JAVA_OPTS=-Xms2g -Xmx2g
+    ports:
+      - "9200:9200"
+      - "9600:9600"
+    networks:
+      - flowise-net
+
+  flowise:
+    image: flowiseai/flowise:latest
+    container_name: flowise
+    env_file: .env
+    environment:
+      - DEBUG=flowise:*
+      - LOG_LEVEL=debug
+      - FLOWISE_USERNAME=admin
+      - FLOWISE_PASSWORD=your_password
+    volumes:
+      - "./flowise_data:/root/.flowise"
+      - "./mcp-server:/mnt/mcp-server"
+    ports:
+      - "3000:3000"
+    networks:
+      - flowise-net
+
+networks:
+  flowise-net:
+    driver: bridge
